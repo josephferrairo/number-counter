@@ -3,7 +3,6 @@
 require 'rubygems'
 require 'bundler'
 Bundler.require
-require './app/app'
 
 class NumberCounter < Sinatra::Base
   post '/' do

@@ -1,6 +1,6 @@
 FROM ruby:2.5.5
 
-RUN apt-get update -qq && apt-get install -y build-essential
+RUN apt-get update -qq && apt-get install -y build-essential redis-server
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
@@ -14,5 +14,3 @@ RUN bundle install --without development test
 ADD . $APP_HOME
 
 EXPOSE 4567
-
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "4567"]
