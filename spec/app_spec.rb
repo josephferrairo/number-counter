@@ -35,6 +35,15 @@ describe NumberCounter do
         expect(parsed_body['message']).to eq('Not a valid input')
       end
     end
+
+    it 'will return an error if the input not a number' do
+      Array.new(20) { rand(1...100) }.each do |number|
+        post '/', { not_a_number: number.to_s }.to_json
+        body = last_response.body
+        parsed_body = JSON.parse(body)
+        expect(parsed_body['message']).to eq('Not a valid input')
+      end
+    end
   end
 
   def app
