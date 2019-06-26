@@ -1,0 +1,10 @@
+---
+number-counter:
+  build: .
+  command:
+    redis-server &
+    bundle exec rackup config.ru
+  ports:
+    - "4567:4567"
+  environment:
+    - RACK_ENV=production
