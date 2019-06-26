@@ -2,8 +2,9 @@
 number-counter:
   build: .
   command:
-    redis-server &
-    bundle exec rackup config.ru
+    bash -c
+    "bundle exec rackup config.ru &
+     redis-server"
   ports:
     - "4567:4567"
   environment:
